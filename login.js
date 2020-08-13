@@ -54,7 +54,8 @@ function user_login_auth(elem) {
     if (flag == true) {
         let user_log_session = {
             login_status: true,
-            current_user: x.name
+            current_user: x.name,
+            user_cart:[]
         }
         
         localStorage.setItem("user_log_session", JSON.stringify(user_log_session))
@@ -187,8 +188,8 @@ function register() {
             login_status: true,
             current_user: name
         }
-        JSON.stringify(user_log_session)
-        localStorage.setItem("user_log_session", user_log_session)
+        
+        localStorage.setItem("user_log_session", JSON.stringify(user_log_session))
 
         login_change()
 

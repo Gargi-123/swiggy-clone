@@ -33,7 +33,7 @@ let data = [{ "id": 1, "date": "Fri Jun 12 2020 14:53:15 GMT+0530", "sales": "â‚
 
 
 let loadChart = {
-    type: "bar",
+    type: "line",
     data: {
         labels: data.map((item) => item.date.slice(0, 15)),
         datasets: [
@@ -45,13 +45,13 @@ let loadChart = {
                     data.map(elem => {
                         let x = elem.sales.split("â‚¹")
                         if (Number(x[1]) > 100000 && Number(x[1]) < 200000) {
-                            color_data.push(`rgba(240, 173, 78, 1)`)
+                            color_data.push(`rgba(0, 173, 78, 1)`)
                         }
                         else if (Number(x[1]) > 150000) {
-                            color_data.push(`rgba(92, 184, 92, 1)`)
+                            color_data.push(`rgba(222, 124, 92, 1)`)
                         }
                         else if (Number(x[1]) <= 100000) {
-                            color_data.push(`rgba(217, 83, 79, 1)`)
+                            color_data.push(`rgba(117, 83, 79, 1)`)
                         }
                     })
                     return color_data

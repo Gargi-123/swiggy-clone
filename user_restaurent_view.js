@@ -42,7 +42,7 @@ function renderDom(data) {
 }
 
 
-function pushdata_cart() {
+async function pushdata_cart() {
     let item = event.target.id
     item = item.split("+")
     if (item[0] == "add") {
@@ -58,40 +58,82 @@ function pushdata_cart() {
         else {
 
             log_info = JSON.parse(log_info)
-            let target = document.getElementById("items_in_cart")
-            let price =0
+            let price = 0
             let user_cart
-            if (log_info.user_cart != null) {
-                user_cart = log_info.user_cart
+            let item_name
+            user_cart = log_info.user_cart || []
 
-                let data = fetch(`http://localhost:3000/data?restaurant_id=${current_restaurant_id}`).then(response => response.json()).then(data => { return (data) })
-            
-            
-                    for (let i = 0; i < data.menu_items.length; i++) {
-                        if (item == data.menu_item[i].id) {
-                            price = Number(data.menu_item[i].price)
-                        }
-                    }
+            let data = await fetch(`http://localhost:3000/data?restaurant_id=${current_restaurant_id}`).then(response => response.json()).then(data => { return (data) })
 
+            console.log(data)
 
-                    let new_item = {
-                        restaurant_id: current_restaurant_id,
-                        item_name: item,
-                        price: price
-                    }
+            for (let i = 0; i < data[0].menu_items.length; i++) {
+                if (current_item_id == data[0].menu_items[i].id) {
+                    price = Number(data[0].menu_items[i].price)
+                    item_name = data[0].menu_items[i].name
+                }
+            }
+
+            let flag = false
+            for (let j = 0; j < user_cart.length; j++) {
+                if (user_cart[j].name == item_name) {
+                    user_cart[j].price += price
+                    user_cart[j].qty++
+                    flag = true
+                }
+            }
+
+            if (!flag) {
+                let new_item = {
+                    restaurant_id: current_restaurant_id,
+                    item_name: item_name,
+                    price: price,
+                    qty: 1
                 }
 
-
+                user_cart.push(new_item)
+                log_info.user_cart = user_cart
+                localStorage.setItem("user_log_session", JSON.stringify(log_info))
             }
+            else {
+                log_info.user_cart = user_cart
+                localStorage.setItem("user_log_session", JSON.stringify(log_info))
+            }
+            render_cart()
         }
 
     }
+
+
+}
+
+
+function render_cart() {
+    let target = document.getElementById("cart_display_total_item")
+    let subtotal_target = document.getElementById("cart_total_amount")
+    target.innerHTML = ""
+    let log_info = localStorage.getItem("user_log_session")
+    log_info = JSON.parse(log_info)
+    let subtotal = 0
+    for (let i = 0; i < log_info.user_cart.length; i++) {
+        target.innerHTML += `<div class="row">
+        <div class="col-4"><p>${log_info.user_cart[i].item_name}</p></div>
+        <div class="col-3"><p>${log_info.user_cart[i].qty}</p></div>
+        <div class="col-2"><p>${log_info.user_cart[i].price}</p></div>
+        </div>` 
+        subtotal += log_info.user_cart[i].price
+    }
+    subtotal_target.textContent = "Rs."+subtotal
 
 }
 
 
 function handel_checkout() {
-
+    let log_info = localStorage.getItem("user_log_session")
+    log_info = JSON.parse(log_info)
+    if(log_info.login_status){
+        window.location.assign("user_cart.html")
+    }
 }
 
 function remove(x) {
