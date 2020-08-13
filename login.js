@@ -19,13 +19,7 @@ function refresh_all_data() {
         localStorage.setItem("company_record", company_record)
     }
 
-
-    if (!(localStorage.getItem("restaurant_record"))) {
-        let arr = []
-        JSON.stringify(arr)
-        localStorage.setItem("restaurant_record", arr)
-    }
-    if (!(localStorage.getItem("user_log_session"))) {
+    if (localStorage.getItem("user_log_session") == null) {
 
         let arr = {
             login_status: false
@@ -85,37 +79,40 @@ function user_login_auth(elem) {
 
 // ---------- restaurant authentication  not done  -----------
 
-// function restaurant_login_auth(elem) {
-//     elem.preventDefault()
-//     var user = document.getElementById("log_id").value
-//     var pass_elem = document.getElementById("log_pass")
-//     var pass = pass_elem.value
-//     pass_elem.value = ""
+async function restaurant_login_auth(elem) {
+    elem.preventDefault()
+    var user = document.getElementById("restaurant_login").value
+    var pass_elem = document.getElementById("restaurant_pass")
+    var pass = pass_elem.value
+    pass_elem.value = ""
 
-//     var data = localStorage.getItem("user_record")
+    let data = await fetch("http://localhost:3000/data").then(response => response.json()).then((data) => { return (data) })
 
-//     arr = JSON.parse(data) || []
-//     var flag = false
-//     for (var i = 0; i < arr.length; i++) {
-//         var x = arr[i]
-//         if (arr[i].user == user && arr[i].pass == pass) {
-//             current_user = arr[i].name
-//             flag = true
-//         }
-//     }
+    console.log(data)
+    let x
+    var flag = false
+    for (var i = 0; i < data.length; i++) {
 
-//     if (flag == true) {
-//         current_user = x.user
-//         localStorage.setItem("user", x.user)
-//         window.location.replace("index.html")
-//     }
+        if (data[i].restaurant_id == user && data[i].restaurant_password == pass) {
+            x = data[i]
+            flag = true
+        }
+    }
 
-//     else {
-//         var log_error = document.getElementById("log_error")
-//         log_error.textContent = "Wrong Credincials"
-//         remove(log_error)
-//     }
-// }
+    if (flag == true) {
+        let params = new URLSearchParams()
+        params.append("restaurant_id", x.restaurant_id)
+        let url = "restaurant_dashboard.html"
+        window.location.assign(url + "?" + params.toString())
+
+    }
+
+    else {
+        var log_error = document.getElementById("restaurant_error")
+        log_error.textContent = "Wrong Credincials"
+        remove(log_error)
+    }
+}
 
 // -----------end---------
 
@@ -128,18 +125,16 @@ function company_login_auth(elem) {
     var pass = pass_elem.value
     pass_elem.value = ""
 
-    let data = localStorage.getItem("company_record")
-
-    arr = JSON.parse(data) || []
+    
     var flag = false
-    for (var i = 0; i < arr.length; i++) {
-        if (arr[i].user == user && arr[i].pass == pass) {
+    for (var i = 0; i < company_record.length; i++) {
+        if (company_record[i].company_user_no == user && company_record[i].company_user_pass == pass) {
             flag = true
         }
     }
 
     if (flag == true) {
-        window.location.replace("company_dashboard.html")
+        window.location.assign("company_dashboard.html")
     }
 
     else {
@@ -217,18 +212,18 @@ function register() {
 
 function handle_find_food() {
     let x = document.getElementById("location_input").value
-    if(x != ""){
-        if(true){
-        let params = new URLSearchParams()
-        params.append("city", x)
-        let url = "user_serach_dashboard.html"
-        window.location.assign(url + "?" + params.toString())
+    if (x != "") {
+        if (true) {
+            let params = new URLSearchParams()
+            params.append("city", x)
+            let url = "user_serach_dashboard.html"
+            window.location.assign(url + "?" + params.toString())
         }
     }
-    else{
+    else {
         let err = document.getElementById("location_error")
         err.textContent = "Enter the delivery Location"
-        remove(err) 
+        remove(err)
     }
 }
 
@@ -275,6 +270,25 @@ function remove(x) {
     }, 4000)
 
 }
+
+let i = 0
+function tagchange(){
+    let x = document.getElementById("tagline_change")
+    
+    let tag_arr = ["Late night at office?",
+        "Unexpected guests?","Cooking gone wrong?",
+        "Hungry?", "Movie marathon?", "Cooking gone wrong?", "Unexpected guests?"]
+    if (i > tag_arr.length - 1) {
+        i = 0
+    }
+    x.textContent = tag_arr[i]
+    i++
+}
+
+let title = setInterval(function () {
+    tagchange()
+}, 3000)
+
 
 
 function login_change() {
@@ -324,7 +338,7 @@ function add() {
     var reg = document.getElementById("register")
     reg.addEventListener("click", register)
     var reg = document.getElementById("restaurant_submit")
-    //reg.addEventListener("click", restaurant_login_auth)
+    reg.addEventListener("click", restaurant_login_auth)
     var reg = document.getElementById("company_submit")
     reg.addEventListener("click", company_login_auth)
     var reg = document.getElementById("locate_me")
@@ -333,12 +347,13 @@ function add() {
     reg.addEventListener("click", handle_find_food)
 
     refresh_all_data()
+
 }
 
 
 // function generateOTP() { 
-          
-     
+
+
 //     var digits = '0123456789'; 
 //     let OTP = ''; 
 //     for (let i = 0; i < 4; i++ ) { 

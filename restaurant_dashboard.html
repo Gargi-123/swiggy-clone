@@ -4,52 +4,123 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <div class="container">
+    <div class="container-fulid">
+        <div class="row text-center">
+            <div class="col" style="height: 70px;">
+                <p class="h4">Welcone to Restaurant Dashboard</p>
+
+
+                <a href="login.html"><button class="btn btn-danger">Logout</button></a>
+            </div>
+
+
+
+
+        </div>
 
         <div class="row">
             <div class="col">
-                <div class="container">
-                    <div>
-                        <canvas id="myChart""></canvas>
+                <div class="row">
+                    <div class="col-3">
+                        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
+                            aria-orientation="vertical">
+
+                            <a class="nav-link active" id="v-pills-profile-tab" data-toggle="pill" href="#view_profile"
+                                role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile Overview</a>
+                            <a class="nav-link " id="v-pills-home-tab" data-toggle="pill" href="#sales_graph" role="tab"
+                                aria-controls="v-pills-home" aria-selected="true">Sales visualization</a>
+
+                            <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#edit_profile"
+                                role="tab" aria-controls="v-pills-messages" aria-selected="false">Edit Profile</a>
+                            <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#menu_data"
+                                role="tab" aria-controls="v-pills-settings" aria-selected="false">Menu Data</a>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
+                    <div class="col-9">
+                        <div class="tab-content" id="v-pills-tabContent">
+
+                            <div class="tab-pane fade show" id="sales_graph" role="tabpanel"
+                                aria-labelledby="v-pills-home-tab">
 
 
-        <div class=" row m-4">
-            <div class="col-6">
-                <div class="container">
+                                <div class="container">
 
-                    <div class="form-inline">
-                        <div class="form-group">
-                            <label for="inlineFormCustomSelectPref" class="m-1">Select
-                                Date</label>
-                            <select class="custom-select m-1" id="select">
-                            <option selected>Choose...</option>
-                            </select>
-                            <div class="form-group m-1">
-                                <input type="text" id="sales_edit" class="form-control">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div>
+                                                <canvas id="myChart""></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class=" row m-4">
+                                                    <div class="col-6">
+                                                        <div class="container">
+
+                                                            <div class="form-inline">
+                                                                <div class="form-group">
+                                                                    <label for="inlineFormCustomSelectPref"
+                                                                        class="m-1">Select
+                                                                        Date</label>
+                                                                    <select class="custom-select m-1" id="select">
+                                                                        <option selected>Choose...</option>
+                                                                    </select>
+                                                                    <div class="form-group m-1">
+                                                                        <input type="text" id="sales_edit"
+                                                                            class="form-control">
+                                                                    </div>
+                                                                    <button class="btn btn-primary m-1"
+                                                                        id="update_sales">Update</button>
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                            </div>
+
+                                        </div>
+
+
+
+
+                                    </div>
+                                    <div class="tab-pane fade" id="view_profile" role="tabpanel"
+                                        aria-labelledby="v-pills-profile-tab">...</div>
+                                    <div class="tab-pane fade" id="edit_profile" role="tabpanel"
+                                        aria-labelledby="v-pills-messages-tab">...</div>
+                                    <div class="tab-pane fade" id="menu_data" role="tabpanel"
+                                        aria-labelledby="v-pills-settings-tab">...</div>
+                                </div>
                             </div>
-                                <button class="btn btn-primary m-1" id="update_sales">Update</button>
                         </div>
 
                     </div>
-
                 </div>
+
+
+
             </div>
-        </div>
-    </div>
 
 
 
 
 
-    <script type="text/javascript" src="Sales_Chart2.js"></script>
-    
+            <script type="text/javascript" src="Sales_Chart2.js"></script>
+
 </body>
 
 </html>

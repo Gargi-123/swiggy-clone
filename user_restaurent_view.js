@@ -11,16 +11,17 @@ function serch_restaurant() {
     }
 }
 
-function renderDom(data){
+function renderDom(data) {
     let target = document.getElementById("menu_in_glance")
     let target2 = document.getElementById("menu_div")
+    let add_btn = document.createElement("button")
+    add_btn.addEventListener("click", pushdata_cart)
+    add_btn.textContent = "Add"
+    add_btn.setAttribute("class", "btn btn-outline-success btn-sm")
     let menu_item = data[0].menu_items
-    if(menu_item.length != 0){
-        for(let i = 0 ; i < menu_item.length; i++){
-            let add_btn = document.createElement("button")
-            add_btn.addEventListener("click", pushdata_cart)
-            add_btn.textContent = "Add"
-            add_btn.setAttribute("class", "btn btn-outline-success btn-sm")
+    if (menu_item.length != 0) {
+        for (let i = 0; i < menu_item.length; i++) {
+
             target.innerHTML += `<p style="font-size: 14px;">${menu_item[i].name}</p>`
             target2.innerHTML += `<div class="media p-3">
             <div class="media-body">
@@ -28,17 +29,17 @@ function renderDom(data){
                 <p>₹ ${menu_item[i].price}</p>
                 <p class="text-muted">${menu_item[i].description}</p>
             </div>
-            <img src="${menu_item[i].image}" class="ml-3" alt="...">
+            <img src="resource/${menu_item[i].image}" class="ml-3" alt="...">
           </div>`
-          add_btn.setAttribute("id", menu_item[i].id)
-          
-          target2.append(add_btn)
+            add_btn.setAttribute("id", menu_item[i].id)
+
+            target2.append(add_btn)
         }
     }
 }
 
 
-function pushdata_cart(event){
+function pushdata_cart() {
     console.log("cbjlds")
     console.log(event.target)
 
@@ -46,8 +47,8 @@ function pushdata_cart(event){
 }
 
 
-function handel_checkout(){
-    
+function handel_checkout() {
+
 }
 
 

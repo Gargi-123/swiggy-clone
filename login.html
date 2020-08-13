@@ -4,7 +4,7 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-        <script src="https://kit.fontawesome.com/c6128ca3f5.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/c6128ca3f5.js" crossorigin="anonymous"></script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -16,20 +16,22 @@
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
 </head>
+
 <body>
     <div class="container-fluid">
 
         <div class="row">
 
-            <div class="col-7">
+            <div class="col-7 p-4">
 
                 <div class="container">
 
                     <div class="row">
                         <div class="col-8">
-                            <img src="Resource/Swiggy-PNG-Logo.png" alt="company_logo" style="width: 100px;height: 100px;">
+                            <img src="Resource/Swiggy-PNG-Logo.png" alt="company_logo"
+                                style="width: 100px;height: 100px;">
                         </div>
-                        <div class="col-4" id="user_log_div">
+                        <div class="col-4 my-3" id="user_log_div">
                             <a type="button" class="text-primary" data-toggle="modal" data-target="#loginModal"><button
                                     class="btn btn-dark"><u class="text-light">Login In
                                     </u></button></a>
@@ -41,7 +43,7 @@
 
                     <div class="row">
                         <div class="col">
-                            <p class="h2" id="tagline_change">kewjfklje</p>
+                            <p class="h2" id="tagline_change">Cooking gone wrong?</p>
                             <p class="text-muted">Order food from favourite restaurants near you.</p>
                         </div>
                     </div>
@@ -50,7 +52,8 @@
                         <div class="col">
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="Enter your deliver Location"
-                                    aria-label="Enter your deliver Location" aria-describedby="find_food" id="location_input">
+                                    aria-label="Enter your deliver Location" aria-describedby="find_food"
+                                    id="location_input">
                                 <div class="input-group-append">
                                     <a id="locate_me"><span class="input-group-text">Locate Me</span></a>
                                     <button class="input-group-text bg-warning" id="find_food">FIND FOOD</button>
@@ -64,11 +67,11 @@
                         <div class="col">
                             <p class="text-muted">POPULAR CITIES IN INDIA</p>
                             <p class="text-muted">
-                                <a href="">Chennai</a>
-                                <a href="">Noida</a>
-                                <a href="">Ranchi</a>
-                                <a href="">Patna</a>
-                                <a href="">Pune</a>
+                                <a class="mx-2" href="user_serach_dashboard.html?city=Chennai">Chennai</a>
+                                <a class="mx-2" href="user_serach_dashboard.html?city=Noida">Noida</a>
+                                <a class="mx-2" href="user_serach_dashboard.html?city=Ranchi">Ranchi</a>
+                                <a class="mx-2" href="user_serach_dashboard.html?city=Patna">Patna</a>
+                                <a class="mx-2" href="user_serach_dashboard.html?city=Pune">Pune</a>
                             </p>
                         </div>
                     </div>
@@ -79,42 +82,36 @@
 
             <div class="col-5">
                 <div class="container">
-                    <img src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_1340/Lunch1_vlksgq" alt="weblogo" style="width: 500px;">
+                    <img src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_1340/Lunch1_vlksgq"
+                        alt="weblogo" style="width: 630px; height: 450PX;">
                 </div>
-                <!-- <div class="_2h2bu" style="background-image:url('')"></div> -->
             </div>
 
 
         </div>
 
-        <div class="row text-center" style="background-color: rgb(107, 14, 14);">
+        <div class="row text-center p-4" style="background-color: rgb(107, 14, 14);">
             <div class="col-4 style=" border: 1px solid black;"">
                 <img src="Resource/no_min_order.png" alt="img" style="width: 150px;">
                 <h4 class="text-white font-weight-bold">No Minimum Order</h4>
-                <p class="text-white">
-                    Order in for yourself or for the group, with no restrictions on order value
-                </p>
+
             </div>
 
             <div class="col-4 style=" border: 1px solid black;"">
                 <img src="Resource/order_tracking.png" alt="img" style="width: 150px;">
                 <h4 class="text-white font-weight-bold">Live Order Tracking</h4>
-                <p  class="text-white">
-                    Know where your order is at all times, from the restaurant to your doorstep
-                </p>
+
             </div>
             <div class="col-4 style=" border: 1px solid black;"">
                 <img src="Resource/fast_delivery.png" alt="img" style="width: 180px;">
                 <h4 class="text-white font-weight-bold">Lightning-Fast Delivery</h4>
-                <p  class="text-white">
-                    Experience Swiggy's superfast delivery for food delivered fresh & on time
-                </p>
+
             </div>
         </div>
 
 
         <div class="row text-center" style="background-color: #171a29;">
-            <div class="col-3">
+            <div class="col-3 p-4">
                 <p class="text-muted font-weight-bold">COMPANY</p>
                 <p class="text-light">About Us</p>
                 <p class="text-light">Team</p>
@@ -122,13 +119,13 @@
                 <p class="text-light">Swiggy Blog</p>
                 <p class="text-light">Events</p>
             </div>
-            <div class="col-3">
+            <div class="col-3 p-4">
                 <p class="text-muted font-weight-bold">CONTACT</p>
                 <p class="text-light">Help & Support</p>
                 <p class="text-light">Partner</p>
                 <p class="text-light">Ride With Us</p>
             </div>
-            <div class="col-3">
+            <div class="col-3 p-4">
                 <p class="text-muted font-weight-bold">LEGAL</p>
                 <p class="text-light">Terms & Conditions</p>
                 <p class="text-light">Refund & Cancellation</p>
@@ -136,31 +133,46 @@
                 <p class="text-light">Cookie Policy</p>
                 <p class="text-light">Offer Terms</p>
             </div>
-            <div class="col-3">
-                <!-- <div style="width: 100px; height: 50px; border: 1px solid black;"></div>
-                <div style="width: 100px; height: 50px; border: 1px solid black;"></div> -->
-                <div class="_1Jvc1 mt-1 mb-1"><a href="https://itunes.apple.com/in/app/id989540920?referrer=utm_source%3Dswiggy%26utm_medium%3Dhomepage" rel="nofollow noopener" alt="" target="_blank" class="_3VAT-"><img class="" width="100" height="45" alt="" src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/icon-AppStore_lg30tv"></a>
-                    <a href="https://play.google.com/store/apps/details?id=in.swiggy.android&amp;referrer=utm_source%3Dswiggy%26utm_medium%3Dheader" rel="nofollow noopener" alt="" target="_blank" class="_3VAT-"><img class="" width="100" height="45" alt="" src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/icon-GooglePlay_1_zixjxl"></a></div>
+            <div class="col-3 p-4">
+                <div class="_1Jvc1 mt-1 mb-1"><a
+                        href="https://itunes.apple.com/in/app/id989540920?referrer=utm_source%3Dswiggy%26utm_medium%3Dhomepage"
+                        rel="nofollow noopener" alt="" target="_blank" class="_3VAT-"><img class="" width="100" alt=""
+                            src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/icon-AppStore_lg30tv"></a>
+                    <br>
+                    <br>
+                    <a href="https://play.google.com/store/apps/details?id=in.swiggy.android&amp;referrer=utm_source%3Dswiggy%26utm_medium%3Dheader"
+                        rel="nofollow noopener" alt="" target="_blank" class="_3VAT-"><img class="" width="100" alt=""
+                            src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/icon-GooglePlay_1_zixjxl"></a>
+                </div>
 
-                <a type="button" class="text-primary" data-toggle="modal" data-target="#restaurantModal"><button
+                <a type="button" class="text-primary my-2" data-toggle="modal" data-target="#restaurantModal"><button
                         class="btn btn-dark m-1"><u class="text-light font-weight-bold m-1">Restaurant Login
                         </u></button></a>
-
-                <a type="button" class="text-primary" data-toggle="modal" data-target="#companyModal"><button
+                <br>
+                <a type="button" class="text-primary my-2" data-toggle="modal" data-target="#companyModal"><button
                         class="btn btn-dark m-1"><u class="text-light font-weight-bold m-1">Company Login
                         </u></button></a>
             </div>
             <br>
             <br>
-            <hr>
+            <div class="dropdown-divider bg-white"></div>
             <br>
             <br>
+
+
+
+        </div>
+
+        <div class="row text-center" style="background-color: #171a29;">
+
             <div class="col-4">
-                <img src="Logo_f5xzza.png" alt="" style="height: 60px;">
+                <img src="Logo_f5xzza.png" alt="company_logo" style="width: 100px;">
             </div>
-            <div class="col-4">
+
+            <div class="col-4 my-2">
                 <p class="text-light">© 2020 Swiggy</p>
             </div>
+
             <div class="col-4 justify-content-right">
                 <i class="fab fa-facebook-f text-white font-weight-bold" style="width: 50px; height: 50px;"></i>
                 <i class="fab fa-twitter text-white font-weight-bold" style="width: 50px; height: 50px;"></i>
@@ -170,23 +182,6 @@
 
         </div>
 
-        <!-- <div class="col-6  m-4 bg-warning p-4 rounded">
-            <div>
-                <div class="form-group">
-                    <label for="log_id">Email address</label><small class="text-danger">*</small>
-                    <input type="text" placeholder="UserId" id="log_id" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="log_pass">Password</label><small class="text-danger">*</small>
-                    <input type="password" placeholder="password" id="log_pass" class="form-control">
-                    <small id="log_error" class="form-text text-danger"></small>
-
-
-                    
-                </div>
-                <button id="log_submit" class="btn btn-primary">Login</button>
-            </div>
-        </div> -->
     </div>
 
 
