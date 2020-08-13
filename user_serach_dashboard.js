@@ -11,8 +11,6 @@ function serch_restaurant() {
             console.log(city)
             fetch(`http://localhost:3000/data/?City=${firstletter + city}`).then(response => response.json()).then(data => renderDom(data))
         }
-
-
     }
 }
 

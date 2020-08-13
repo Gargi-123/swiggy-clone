@@ -183,7 +183,6 @@ function register() {
                 return
             }
         }
-
         var new_user = {
             name: name,
             user: userid,
