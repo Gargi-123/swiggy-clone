@@ -4,6 +4,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
+        <script src="https://kit.fontawesome.com/c6128ca3f5.js" crossorigin="anonymous"></script>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
@@ -20,91 +22,52 @@
     <div class="container-fluid">
 
 
-        <div class="row" style="border: 1px solid black;">
+        <div class="row">
 
-            <div class="col">
+            <div class="col-2 mt-3">
 
+                <a class="navbar-brand" href="#">
+                    <img src="Resource/Swiggy-PNG-Logo.png" width="70" height="70" alt="" loading="lazy">
+                </a>
 
+            </div>
 
-                <!-- nav bar -->
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="col-4 mt-3">
 
-                    <div class="col-2">
-                        <a class="navbar-brand" href="#">
-                            <img src="/docs/4.5/assets/brand/bootstrap-solid.svg" width="30" height="30" alt=""
-                                loading="lazy">
-                        </a>
-                    </div>
-
-                    <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-                        <ul class="navbar-nav mr-auto">
-
-                            <div class="col-9">
-                                <li class="nav-item active">
-                                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                                </li>
-                            </div>
-
-                            <div class="col-4">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Link</a>
-                                </li>
-                            </div>
-
-
-                            <div class="col-4">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Link</a>
-                                </li>
-                            </div>
-
-                            <div class="col-4">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Link</a>
-                                </li>
-                            </div>
-
-                            <div class="col-4">
-                                <!-- <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Dropdown
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#">Action</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="#">Something else here</a>
-                                    </div>
-                                </li> -->
-                            </div>
-
-
-                            <div class="col-4">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Link</a>
-                                </li>
-                            </div>
-                        </ul>
-                    </div>
-                </nav>
-
+                
+                    <a class="nav-link" href="login.html"><i class="fas fa-home"></i>Home</a>
+                
 
             </div>
 
 
+            <div class="col-2 mt-3">
+
+                    <a class="nav-link  active" href="help.html"><i class="fas fa-hands-helping"></i>Help</a>
+            
+
+            </div>
+
+            <div class="col-2 mt-3">
+
+                    <a class="nav-link" href="login.html"><i class="fas fa-sign-in-alt"></i>Sign In</a>
+                
+
+            </div>
+
+            <div class="col-2 mt-3">
+               
+                    <a class="nav-link" href="user_cart.html"><i class="fas fa-cart-plus"></i>Cart</a>
+                
+
+            </div>
+
         </div>
+
 
             
 
-        <div class="row" style="border: 1px solid black; height: 250px;">
+        <div class="row" >
             <div class="col">
                 <div class="container">
                     <div class="row">
@@ -130,6 +93,8 @@
 
                     <div class="row">
                         <div class="col-3" id="menu_in_glance">
+                            <p class="h5">Menu in Glance</p>
+                            <div class="dropdown-divider bg-white"></div>
 
                         </div>
 
@@ -153,6 +118,7 @@
                             </div>
 
                             <button class="btn btn-success btn-block" id="checkout_btn">CHECKOUT →</button>
+                            <small class="text-danger" id="checkout_error"></small>
 
 
                         </div>

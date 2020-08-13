@@ -30,7 +30,25 @@ let data = [{ "id": 1, "date": "Fri Jun 12 2020 14:53:15 GMT+0530", "sales": "�
 { "id": 29, "date": "Fri Jul 10 2020 14:53:15 GMT+0530", "sales": "₹99468" },
 { "id": 30, "date": "Sat Jul 11 2020 14:53:15 GMT+0530", "sales": "₹207144" }]
 
-
+let response = await fetch("https://reqres.in/api/login", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: payload,
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw (Error(`Status : ${response.status}  statusText : ${response.statusText}`))
+                    }
+                    return response.json()
+                })
+                .then(data => {
+                    let params = new URLSearchParams()
+                    params.append("token", data.token)
+                    let url = "dashboard.html"
+                    window.location.assign(url + "?" + params.toString())
+                })
 
 let loadChart = {
     type: "bar",

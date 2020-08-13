@@ -1,11 +1,14 @@
-function serch_restaurant() {
+let current_restaurant_id
+
+async function serch_restaurant() {
 
     let query = window.location.search
     if (query != "") {
         let url = new URLSearchParams(query)
         if (url.get("restaurant_id")) {
             let restaurant_id = url.get("restaurant_id")
-            fetch(`http://localhost:3000/data?restaurant_id=${restaurant_id}`).then(response => response.json()).then(data => renderDom(data))
+            current_restaurant_id = restaurant_id
+            await fetch(`http://localhost:3000/data?restaurant_id=${restaurant_id}`).then(response => response.json()).then(data => renderDom(data))
         }
 
     }
@@ -29,9 +32,9 @@ function renderDom(data) {
                 <p>₹ ${menu_item[i].price}</p>
                 <p class="text-muted">${menu_item[i].description}</p>
             </div>
-            <img src="resource/${menu_item[i].image}" class="ml-3" alt="...">
+            <img src="resource/${menu_item[i].image}" style="width:100px ; height: 100px"   class="ml-3" alt="...">
           </div>`
-            add_btn.setAttribute("id", menu_item[i].id)
+            add_btn.setAttribute("id", `add+${menu_item[i].id}`)
 
             target2.append(add_btn)
         }
@@ -40,9 +43,49 @@ function renderDom(data) {
 
 
 function pushdata_cart() {
-    console.log("cbjlds")
-    console.log(event.target)
+    let item = event.target.id
+    item = item.split("+")
+    if (item[0] == "add") {
 
+        current_item_id = Number(item[1])
+
+        let log_info = localStorage.getItem("user_log_session")
+        if (log_info == null) {
+            var log_error = document.getElementById("checkout_error")
+            log_error.textContent = "Please Login to Proceed"
+            remove(log_error)
+        }
+        else {
+
+            log_info = JSON.parse(log_info)
+            let target = document.getElementById("items_in_cart")
+            let price =0
+            let user_cart
+            if (log_info.user_cart != null) {
+                user_cart = log_info.user_cart
+
+                let data = fetch(`http://localhost:3000/data?restaurant_id=${current_restaurant_id}`).then(response => response.json()).then(data => { return (data) })
+            
+            
+                    for (let i = 0; i < data.menu_items.length; i++) {
+                        if (item == data.menu_item[i].id) {
+                            price = Number(data.menu_item[i].price)
+                        }
+                    }
+
+
+                    let new_item = {
+                        restaurant_id: current_restaurant_id,
+                        item_name: item,
+                        price: price
+                    }
+                }
+
+
+            }
+        }
+
+    }
 
 }
 
@@ -51,7 +94,13 @@ function handel_checkout() {
 
 }
 
+function remove(x) {
+    var elem = x
+    setTimeout(function () {
+        elem.textContent = ""
+    }, 4000)
 
+}
 
 
 function add() {
@@ -59,8 +108,8 @@ function add() {
     serch_restaurant()
     var submit = document.getElementById("checkout_btn")
     submit.addEventListener("click", handel_checkout)
-    // var reg = document.getElementById("register")
-    // reg.addEventListener("click", register)
+    let target2 = document.getElementById("menu_div")
+    target2.addEventListener("click", pushdata_cart)
     // var reg = document.getElementById("restaurant_submit")
     // //reg.addEventListener("click", restaurant_login_auth)
     // var reg = document.getElementById("company_submit")

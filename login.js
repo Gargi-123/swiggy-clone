@@ -12,20 +12,13 @@ let company_record = [
 
 
 function refresh_all_data() {
-
-    if (localStorage.getItem("company_record") == null) {
-
-        JSON.stringify(company_record)
-        localStorage.setItem("company_record", company_record)
-    }
-
     if (localStorage.getItem("user_log_session") == null) {
 
         let arr = {
             login_status: false
-        }
-        JSON.stringify(arr)
-        localStorage.setItem("user_log_session", arr)
+          }
+        
+        localStorage.setItem("user_log_session", JSON.stringify(arr))
 
         let x = localStorage.getItem("user_log_session")
         if (x.login_status == true) {
@@ -63,8 +56,8 @@ function user_login_auth(elem) {
             login_status: true,
             current_user: x.name
         }
-        JSON.stringify(user_log_session)
-        localStorage.setItem("user_log_session", user_log_session)
+        
+        localStorage.setItem("user_log_session", JSON.stringify(user_log_session))
 
         login_change()
     }
@@ -295,12 +288,13 @@ function login_change() {
     let target = document.getElementById("user_log_div")
 
     let user_detail = localStorage.getItem("user_log_session")
+    user_detail = JSON.parse(user_detail)
 
     target.innerHTML = `
 
     <div class="dropdown">
   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-  ${user_detail.name}
+  ${user_detail.current_user}
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <a class="dropdown-item" href=user_profile.html>View Profile</a>
