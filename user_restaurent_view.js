@@ -15,6 +15,21 @@ async function serch_restaurant() {
 }
 
 function renderDom(data) {
+    let img_div = document.getElementById("restaurant_img")
+    img_div.setAttribute("src", `resource/${data[0].restaurant_images}`)
+    let detail = document.getElementById("restaurant_details")
+    detail.innerHTML = `<p class="h3">${data[0].restaurant_name}</p>
+    <p class="text-muted">${data[0].Cuisines}</p>
+    <p class="text-muted">${data[0].Address}</p>
+    <div class="col-6">
+        <p>${data[0].aggregate_rating}</p>
+        <p class="text-muted">${data[0].Votes} Votes</p>
+    </div>
+    
+    <div class="col-6">
+        <p>${data[0].average_Cost_for_two}</p>
+        <p class="text-muted">Cost for two</p>
+    </div>`
     let target = document.getElementById("menu_in_glance")
     let target2 = document.getElementById("menu_div")
     let add_btn = document.createElement("button")

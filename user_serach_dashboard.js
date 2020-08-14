@@ -48,9 +48,7 @@ function renderDom(data) {
                         <div class="col">
                             <span class="badge ${color_code}">★ ${rating}</span>
                         </div>
-                        <div class="col">
-                            <p>Delivery Time</p>
-                        </div>
+                        
                         <div class="col">
                             <p>₹${data[i].average_Cost_for_two} FOR TWO</p>
                         </div>

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "json:server": "json-server --watch formated_data.json"
+    "json:server": "json-server --watch data.json"
   },
   "author": "",
   "license": "ISC",

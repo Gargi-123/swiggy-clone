@@ -2,25 +2,25 @@
 
 
 function render_cart() {
-    let target = document.getElementById("cart_display_total_item")
-    let subtotal_target = document.getElementById("cart_total_amount")
-    target.innerHTML = ""
+    let total_tax = document.getElementById("total_taxes")
+    let delivery_fee = document.getElementById("delivery_fee")
+    let total_discount = document.getElementById("total_item")
+    let total_pay = document.getElementById("total_pay")
+    total_pay.innerText = ""
     let log_info = localStorage.getItem("user_log_session")
     log_info = JSON.parse(log_info)
     let subtotal = 0
     for (let i = 0; i < log_info.user_cart.length; i++) {
-        target.innerHTML += `<div class="row">
-        <div class="col-4"><p>${log_info.user_cart[i].item_name}</p></div>
-        <div class="col-3"><p>${log_info.user_cart[i].qty}</p></div>
-        <div class="col-2"><p>${log_info.user_cart[i].price}</p></div>
-        </div>` 
         subtotal += log_info.user_cart[i].price
     }
-    subtotal_target.textContent = "Rs."+subtotal
+    total_pay.textContent = "Rs."+subtotal
+    total_discount.innerText = log_info.user_cart.length
 }
+
 window.onload=function(){
     let pay_btn=document.getElementById('pay_btn')
     pay_btn.addEventListener('click',handlePayent)
+    render_cart()
 }
 const handlePayent=()=>{
     event.preventDefault()
@@ -28,12 +28,4 @@ const handlePayent=()=>{
     res.innerHTML=`<div class="alert alert-success" role="alert">
     <i class="fas fa-check text-success"></i>Payment successfull
   </div>`
-}
-
-
-
-
-
-
-
 }
