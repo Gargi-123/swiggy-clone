@@ -300,7 +300,7 @@ function login_change() {
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <a class="dropdown-item" href=user_profile.html>View Profile</a>
     <div class="dropdown-divider"></div>
-    <a class="dropdown-item" id="logout_btn" href="login.html">logout</a>
+    <a class="dropdown-item" id="logout_btn" href="index.html">logout</a>
   </div>
 </div>`
 
@@ -313,7 +313,7 @@ function login_change() {
 
 function handle_logout() {
     localStorage.removeItem("user_log_session")
-    window.location.replace("login.html")
+    window.location.replace("index.html")
 }
 
 
