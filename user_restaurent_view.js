@@ -47,7 +47,7 @@ function renderDom(data) {
                 <p>₹ ${menu_item[i].price}</p>
                 <p class="text-muted">${menu_item[i].description}</p>
             </div>
-            <img src="resource/${menu_item[i].image}" style="width:100px ; height: 100px"   class="ml-3" alt="...">
+            <img src=`resource/${menu_item[i].image}` style="width:100px ; height: 100px"   class="ml-3" alt="...">
           </div>`
             add_btn.setAttribute("id", `add+${menu_item[i].id}`)
 
