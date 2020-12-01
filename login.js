@@ -80,7 +80,7 @@ async function restaurant_login_auth(elem) {
     var pass = pass_elem.value
     pass_elem.value = ""
 
-    let data = await fetch("http://localhost:3000/data").then(response => response.json()).then((data) => { return (data) })
+    let data = await fetch("https://swiggy-clone-json-server.herokuapp.com/data").then(response => response.json()).then((data) => { return (data) })
 
     console.log(data)
     let x
