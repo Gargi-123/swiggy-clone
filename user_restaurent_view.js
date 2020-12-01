@@ -8,7 +8,7 @@ async function serch_restaurant() {
         if (url.get("restaurant_id")) {
             let restaurant_id = url.get("restaurant_id")
             current_restaurant_id = restaurant_id
-            await fetch(`http://localhost:3000/data?restaurant_id=${restaurant_id}`).then(response => response.json()).then(data => renderDom(data))
+            await fetch(`https://swiggy-clone-json-server.herokuapp.com/data?restaurant_id=${restaurant_id}`).then(response => response.json()).then(data => renderDom(data))
         }
 
     }
@@ -78,7 +78,7 @@ async function pushdata_cart() {
             let item_name
             user_cart = log_info.user_cart || []
 
-            let data = await fetch(`http://localhost:3000/data?restaurant_id=${current_restaurant_id}`).then(response => response.json()).then(data => { return (data) })
+            let data = await fetch(`https://swiggy-clone-json-server.herokuapp.com/data?restaurant_id=${current_restaurant_id}`).then(response => response.json()).then(data => { return (data) })
 
             console.log(data)
 
