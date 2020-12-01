@@ -40,7 +40,7 @@ function renderDom(data) {
             row.innerHTML = row.innerHTML + ` 
             <a href="user_restaurent_view.html?restaurant_id=${data[i].restaurant_id}"><div class="col-3 mb-4">
                     <div class="card">
-                        <img src="resource/${data[i].restaurant_images}" style="width: 245px ; height: 200px" class="card-img-top" alt="restaurant_img">
+                        <img src="Resource/${data[i].restaurant_images}" style="width: 245px ; height: 200px" class="card-img-top" alt="restaurant_img">
                     <div class="card-body">
 
                         <p>${data[i].restaurant_name}</p>
