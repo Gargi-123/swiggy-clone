@@ -9,7 +9,7 @@ function serch_restaurant() {
             let firstletter = city[0].toUpperCase()
             city = city.slice(1, city.length)
             console.log(city)
-            fetch(`https://swiggy-clone-json-server.herokuapp.com/data?City=${firstletter + city}`).then(response => response.json()).then(data => renderDom(data))
+            fetch(`https://swiggy-clone-json-server.herokuapp.com/data/?City=${firstletter + city}`).then(response => response.json()).then(data => renderDom(data))
         }
     }
 }
